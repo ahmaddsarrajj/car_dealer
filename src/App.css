@@ -1,0 +1,24 @@
+:root {
+    --main: #ec1f26;
+    --dark: rgb(17, 17, 17);
+    --linear_main: linear-gradient(to right, rgb(41, 0, 0) , #ec1f26);
+  }
+
+  body{
+    font-family: var(--font);
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer{
+    width: 100%;
+    position: relative;
+    bottom: 0;
+   
+  }
+
+  
+
+  
+
+  
