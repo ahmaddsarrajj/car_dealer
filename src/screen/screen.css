@@ -21,6 +21,9 @@
     width: 48%;
     padding: 40px 6px 0 0;
   }
+  .all .list {
+    justify-content: center;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -28,12 +31,16 @@
     width: 49%;
     padding: 40px 6px 0 0;
   }
+  .all .list {
+    justify-content: start;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .all .list .cnt {
     width: 20%;
     padding: 40px 45px 0 0;
+    
   }
   
 }

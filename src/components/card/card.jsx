@@ -12,7 +12,7 @@ export default function CardItem(props) {
     <Card sx={{ maxWidth: 345 }} className="card">
       <CardMedia
         sx={{ height: 140 }}
-        image="../../../src/assets/car-1300629__340.webp"
+        image="/assets/car-1300629__340.webp"
         title="car"
       />
       <CardContent>

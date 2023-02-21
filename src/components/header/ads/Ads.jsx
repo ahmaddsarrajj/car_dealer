@@ -6,8 +6,8 @@ import './ads.css'
 export default function Ads() {
 
     const images = [
-        {"src": "../../../../src/assets/Frame4.png", "name": "image1"},
-        {"src": "../../../../src/assets/Frame4.png", "name": "image2"},
+        {"src": "/assets/Frame4.png", "name": "image1"},
+        {"src": "/assets/Frame4.png", "name": "image2"},
 
     ]
 
