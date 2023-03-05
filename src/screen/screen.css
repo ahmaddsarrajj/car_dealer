@@ -25,12 +25,11 @@ hr {
 .pagination {
   margin-top: 60px;
 }
-@media only screen and (max-width: 320px) {
+/* @media only screen and (max-width: 320px) {
   .products {
     padding-block: 60px;
   }
   .all .list .cnt {
-    /* border: 1px solid black; */
     width: 48%;
     padding: 12px 6px 0 0;
   }
@@ -44,9 +43,9 @@ hr {
   hr {
     text-align: center;
   }
-}
-
-@media only screen and (min-width: 375px) {
+} 
+*/
+@media only screen and (min-width: 318px) {
   hr{
     text-align: start;
   }

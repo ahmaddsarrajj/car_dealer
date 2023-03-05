@@ -1,6 +1,7 @@
 .head {
     background-color: var(--dark);
     z-index: 10;
+    display: block
 }
 
 .list .item{

@@ -100,3 +100,14 @@
    transition: color 0.5s ease-out;
    cursor: pointer
   }
+
+
+  @media only screen and (max-width: 425px) {
+    .navbar {
+      padding-block: 20px;
+    }
+    .signin button{
+      padding: 16px;
+      font-size: 13px;
+    } 
+  }
