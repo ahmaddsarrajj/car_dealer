@@ -19,7 +19,6 @@ hr {
   border: 3px solid var(--main);
   margin-top: -13px;
   border-radius: 2px;
-  text-align: left;
 }
 
 .pagination {
@@ -46,9 +45,7 @@ hr {
 } 
 */
 @media only screen and (min-width: 318px) {
-  hr{
-    text-align: start;
-  }
+ 
   .products {
     padding-block: 60px;
   }

@@ -55,7 +55,7 @@ export default function All() {
       <Category/>
       <div className="products">
         <h2>Fresh Recomendations</h2>
-        <hr />
+        <hr align="left"/>
         <div className='list'>
          {data?.map(i=>{
           return(
