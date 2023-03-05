@@ -9,12 +9,12 @@ export default function Navbar() {
             Logo
         </div>
       <div className='right'>
-        <div className="search-box">
+        {/* <div className="search-box">
             <button className="btn-search">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
             <input type="text" className="input-search" placeholder="Type to Search..."/>
-        </div>
+        </div> */}
         <div className="signin">
             <button>
                 Sign in

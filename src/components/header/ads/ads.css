@@ -4,11 +4,25 @@
     z-index: 100;
 }
 
-@media only screen and (min-width: 320px) {
-    
+.container1 {
+  padding-inline: 6px;
+}
+
+@media only screen and (max-width: 425px) {
+  .ads{
+    margin:0;
+    padding: 0;
   }
-  
-  @media only screen and (min-width: 768px) {
+  .image {
+      background-position: left;
+      height: auto;
+  }
+  .container1 {
+    padding: 0;
+  }
+}
+
+  @media only screen and (max-width: 768px) {
     .image {
         background-position: left;
         height: 100px;
