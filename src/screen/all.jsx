@@ -1,13 +1,30 @@
-import { Rowing } from '@mui/icons-material'
 import { Pagination } from '@mui/material'
-import usePagination from '@mui/material/usePagination/usePagination'
+import usePagination from '../components/pagination'
 import React, { useEffect, useState } from 'react'
 import CardItem from '../components/card/card'
 import Category from '../components/categories/category'
+import Header from '../components/header/header'
+import Ads from '../components/header/ads/Ads'
 import '../screen/screen.css'
+import Dollar from '../components/dolar/dollar'
+import Carousel from 'carousel-react-rcdev'
+import axios from "axios"
 
 export default function All() {
 
+  const [dollar, setDollar] = useState([]);
+
+  useEffect(() => {
+      getData();
+  }, []);
+
+  function getData() {
+      axios.get('https://cardealerlebanon.com/input/dolar/view.php/').then(function(response) {
+          setDollar(response.data);
+      });
+  }
+
+  
   const data = [
     {id: 1},
     {id: 2},
@@ -51,31 +68,29 @@ export default function All() {
   
 
   return (
-    <div className='all container'>
+    <div className='all'>
+      <div className='adsAll'>
+      <Ads/>
+      <Dollar dollar={dollar}/>
+      </div>
+      <div className='container'>
       <Category/>
       <div className="products">
         <h2>Fresh Recomendations</h2>
         <hr align="left"/>
         <div className='list'>
-         {data?.map(i=>{
+          <Carousel>
+         {_DATA.currentData()?.map(i=>{
           return(
-           <div key={i} className='cnt'>
+           <div key={i.id} className='cnt'>
             <CardItem/>
           </div>
           )
          })
          }
-        <div className='center pagination'>
-         <Pagination
-         count={count}
-         size="large"
-         page={page}
-         variant="outlined"
-         shape="rounded"
-         onChange={handleChange}
-         />
+          </Carousel>
         </div>
-        </div>
+      </div>
       </div>
     </div>
   )

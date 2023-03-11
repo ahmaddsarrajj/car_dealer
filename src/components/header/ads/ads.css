@@ -1,7 +1,7 @@
 .ads {
     position: relative;
-    margin: 20px 0;
-    z-index: 100;
+    margin: 0px 0;
+    z-index: -1;
 }
 
 .container1 {

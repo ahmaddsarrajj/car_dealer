@@ -2,7 +2,7 @@ import React from 'react'
 import './category.css';
 import {categories} from '../../dumy_data/category';
 
-export default function Category() {
+export default function CategoryPage() {
     
   return (
     <div className='container categories'>

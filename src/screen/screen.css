@@ -1,5 +1,6 @@
 .all {
-  padding-block: 60px;
+  padding-block: 10px;
+ 
 }
 .all h2{
     color: black;
@@ -24,33 +25,23 @@ hr {
 .pagination {
   margin-top: 60px;
 }
-/* @media only screen and (max-width: 320px) {
-  .products {
-    padding-block: 60px;
+
+.cnt {
+  width: 70%
+}
+@media only screen and (max-width: 426px){
+  .all {
+    padding: 0;
   }
-  .all .list .cnt {
-    width: 48%;
-    padding: 12px 6px 0 0;
-  }
-  .all .list {
-    padding-top: 40px;
-    justify-content: center;
-  }
-  .products h2 {
-    text-align: center;
-  }
-  hr {
-    text-align: center;
-  }
-} 
-*/
+  
+}
+
 @media only screen and (min-width: 318px) {
  
   .products {
     padding-block: 60px;
   }
   .all .list .cnt {
-    /* border: 1px solid black; */
     width: 48%;
     padding: 12px 6px 0 0;
   }
@@ -67,12 +58,19 @@ hr {
   .all .list {
     justify-content: start;
   }
+  .adsAll {
+    padding-inline: 80px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
   .all .list .cnt {
     width: 20%;
     padding: 40px 45px 0 0;
+    
+  }
+  .all .list {
+    justify-content: space-between;
     
   }
   

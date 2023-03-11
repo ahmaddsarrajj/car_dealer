@@ -1,13 +1,25 @@
 import React from 'react'
 import './navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+
 export default function Navbar() {
   return (
     <div className='navbar container'>
+      
+      {/* menu */}
+      <span className="menu">
+           <span>
+           <FontAwesomeIcon icon={faBars} />
+            </span>
+      </span>
         <div className="logo">
-            Logo
+             Logo
         </div>
+        
+
+
+
       <div className='right'>
         {/* <div className="search-box">
             <button className="btn-search">

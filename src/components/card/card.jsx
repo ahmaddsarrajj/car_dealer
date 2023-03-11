@@ -20,6 +20,8 @@ export default function CardItem(props) {
                 Car Name
               </Typography>
         <table>
+          <tbody>
+
           <tr>
             <td >
               <Typography variant="body2" color="text.secondary">
@@ -51,10 +53,11 @@ export default function CardItem(props) {
               </Typography>
             </td>
           </tr>
+          </tbody>
         </table>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <a href="#" className="linktoCat">Learn More</a>
       </CardActions>
     </Card>
   );
