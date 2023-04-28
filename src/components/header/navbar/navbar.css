@@ -1,15 +1,20 @@
   
   
   /*naviation bar*/
-  .navbar{
+  .navbarr {
     background: var(--linear_main);
-    padding-block: 10px;
+    padding-block: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    z-index: 500;
+    
   }
+
+  .navbarr .logo {
+    width: 10%;
+  }
+  
   
   .right {
     width: 150px;
@@ -87,27 +92,27 @@
   }
   
   
-  .right .signin button {
+  .right .signin .button {
     padding: 12px;
     border-radius: 5px;
-    background-color: white;
-    color: #ec1f26;
+    color: white;
     border-style: none;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 800;
+    text-decoration: none;
   }
-  .right .signin button:hover {
-   color:  rgb(143, 2, 2);
+  .right .signin .button:hover {
+   color:  rgb(202, 202, 202);
    transition: color 0.5s ease-out;
    cursor: pointer
   }
 
 
   @media only screen and (max-width: 425px) {
-    .navbar {
+    .navbarr {
       padding-block: 20px;
     }
-    .signin button{
+    .signin .button{
       padding: 16px;
       font-size: 13px;
     } 

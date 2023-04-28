@@ -1,0 +1,52 @@
+.itemView {
+    color: black;
+}
+
+.itemView .item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-inline: 5vw;
+    padding-block: 5vh;
+    /* margin: auto; */
+}
+.itemView .item .title {
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 3px;
+    width: 100%;
+    padding: 20px;
+    margin-inline: 1%;
+    margin-block: 6px;
+}
+
+.itemView .item .details {
+    display: flex;
+    flex-direction: column;
+}
+.itemView .item .details .images {
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 3px;
+    margin-block: 6px;
+}
+.itemView .item .details .description {
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 3px;
+    margin-block: 6px;
+}
+
+.itemView .item .title .buttons {
+    width: 100%;
+    padding-top: 10px;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.itemView .item .title .buttons .btn {
+    width: 48%;
+    border-radius: 0;
+    background-color: var(--main);
+    color: white;
+    font-weight: 500;
+}

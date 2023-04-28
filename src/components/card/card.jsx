@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import './card.css'
 
-export default function CardItem(props) {
+export default function CardCar(props) {
   return (
     <Card sx={{ maxWidth: 345 }} className="card">
       <CardMedia

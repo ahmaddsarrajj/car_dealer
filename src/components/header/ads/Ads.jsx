@@ -4,29 +4,36 @@ import './ads.css'
 
 export default function Ads() {
 
-    const photos = [
-        {"src": "/assets/Frame4.png", "name": "image1"},
-        {"src": "/assets/Frame4.png", "name": "image2"},
-
-    ]
-
+    
     const [images, setimages] = useState([])
 
+
     useEffect(() => {
-      photos?.map(image=>{
-        setimages(arr => [...arr, image])
-      })
+      const dataFetch = async () => {
+        const data = await (
+          await fetch(
+            "https://cardealerlebanon.com/input/ads/viewAds.php"
+          )
+        ).json();
+        setimages(data)
+      }
+     dataFetch();
     }, [])
     
     
   return (
     <div className="ads">
         <div className="container1">  
-        {console.log(images)}        
+               
             <Carousel>
                 {
                     images?.map((image, i) => {
-                       return <img key={i} src={image.src} alt={image.name} className="image" />
+                      
+                       return (
+                        <a key={i} href={image.link}>
+                        <img  src={image.icon} alt={image.title} className="image" />
+                        </a>
+                       )
                         
                     })
                 }

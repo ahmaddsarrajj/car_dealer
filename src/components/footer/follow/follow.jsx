@@ -5,7 +5,7 @@ import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 
 export default function Follow() {
   return (
-    <div className='container follow'>
+    <div className='our_container follow'>
         <div className="title">
             Follow Us
         </div>

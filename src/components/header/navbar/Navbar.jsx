@@ -2,19 +2,22 @@ import React from 'react'
 import './navbar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
   return (
-    <div className='navbar container'>
+    <div className='navbarr our_container'>
       
       {/* menu */}
-      <span className="menu">
+      {/* <span className="menu">
            <span>
            <FontAwesomeIcon icon={faBars} />
             </span>
-      </span>
+      </span> */}
         <div className="logo">
-             Logo
+             <Link to="/">
+               <img src="/assets/logo_home.png" width="100px"/>
+             </Link>
         </div>
         
 
@@ -28,9 +31,9 @@ export default function Navbar() {
             <input type="text" className="input-search" placeholder="Type to Search..."/>
         </div> */}
         <div className="signin">
-            <button>
+            <Link className="button" to="/login">
                 Sign in
-            </button>
+            </Link>
         </div>
       </div>
     </div>

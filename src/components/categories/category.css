@@ -11,6 +11,7 @@
     padding: 14px 20px;
     width: 20%;
     text-align: center;
+    z-index: 1;
 }
 
 .category a {
@@ -18,15 +19,22 @@
     color: black;
     font-size: 12px;
     font-weight: 600;
-    line-height: 0.5;
 }
 
 .category a:active{
     color: rgb(51, 51, 51)
 }
 
+@media only screen and (min-width: 320px) {
+    .category {
+        width: 100%;
+        /* border: 1px solid black; */
+    }
+}
+
 @media only screen and (min-width: 426px) {
     .categories {
         display: none;
     }
+    
   }

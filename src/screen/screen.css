@@ -29,6 +29,7 @@ hr {
 .cnt {
   width: 70%
 }
+
 @media only screen and (max-width: 426px){
   .all {
     padding: 0;

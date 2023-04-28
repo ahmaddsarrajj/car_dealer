@@ -1,7 +1,6 @@
-import { Pagination } from '@mui/material'
 import usePagination from '../components/pagination'
 import React, { useEffect, useState } from 'react'
-import CardItem from '../components/card/card'
+import CardItem from '../components/card/itemcard'
 import Category from '../components/categories/category'
 import Header from '../components/header/header'
 import Ads from '../components/header/ads/Ads'
@@ -60,20 +59,15 @@ export default function All() {
   const handleChange = (e, p) => {
     setPage(p);
     _DATA.jump(p);
-  };
-
-  // useEffect(() => {
-  //   data.map(d=>console.log(d))
-  // }, [])
-  
+  };  
 
   return (
     <div className='all'>
       <div className='adsAll'>
       <Ads/>
-      <Dollar dollar={dollar}/>
       </div>
-      <div className='container'>
+      <Dollar dollar={dollar}/>
+      <div className='our_container'>
       <Category/>
       <div className="products">
         <h2>Fresh Recomendations</h2>
@@ -83,7 +77,7 @@ export default function All() {
          {_DATA.currentData()?.map(i=>{
           return(
            <div key={i.id} className='cnt'>
-            <CardItem/>
+            {/* <CardItem item={data}/> */}
           </div>
           )
          })

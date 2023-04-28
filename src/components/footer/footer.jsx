@@ -4,11 +4,13 @@ import "./footer.css";
 
 export default function Footer() {
   return (
-    <div className="footer ">
+    <footer className="footer ">
       <Follow />
       
-      <div className="foot container" >
-        <div className="column">logo</div>
+      <div className="foot our_container" >
+        <div className="column" style={{paddingRight: "20px"}}>
+          <img src="/assets/logo_home.png" />
+        </div>
         <div className="column">
 
           {/* //all Categories */}
@@ -124,6 +126,6 @@ export default function Footer() {
 
 
       </div>
-    </div>
+    </footer>
   );
 }

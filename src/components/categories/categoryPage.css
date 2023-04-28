@@ -1,18 +1,25 @@
 .categoryPage {
     padding-top: 30px;
+    z-index: -5;
 }
 
+
 .categoryPage .list{
-    width: 100%;
+  width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
     /* border: 1px solid black; */
-}
+  }
 
-@media only screen and (min-width: 318px) {
- 
+  .section {
+    padding-block: 30px;
+    z-index: -1; 
+  }
+  @media only screen and (min-width: 318px) {
+    
+    
     .products {
       padding-block: 60px;
     }
@@ -24,6 +31,7 @@
       /* border: 1px solid black; */
       width: 48%;
       padding: 12px 6px 0 0;
+      z-index: -1;
     }
     .categoryPage {
         padding-top: 30px;
@@ -31,6 +39,10 @@
 
     .categoryPage .list {
       justify-content: center;
+    }
+
+    .subcategory{
+      padding-bottom: 40px;
     }
   }
   
@@ -42,6 +54,7 @@
     .categoryPage .list .cnt {
       width: 49%;
       padding: 40px 6px 0 0;
+      margin-right: 10px;
     }
     .categoryPage {
         padding-top: 30px;
@@ -53,6 +66,8 @@
     .adsAll {
       padding-inline: 80px;
     }
+
+    
   }
   
   @media only screen and (min-width: 1024px) {

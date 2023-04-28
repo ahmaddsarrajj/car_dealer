@@ -17,7 +17,7 @@ export default function Dolar(props) {
         {dollar.BUYING}
         </span>
       </div>
-      <div className="date">
+      <div className="date text-white">
         {dollar.UPDATED_DATE}
       </div>
     </div>

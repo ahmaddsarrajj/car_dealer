@@ -1,10 +1,23 @@
 import { Pagination } from '@mui/material';
-import React, { useState } from 'react'
-import CardItem from '../card/card';
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom';
+
 import usePagination from '../pagination'
 import './categoryPage.css'
+import Carousel from 'carousel-react-rcdev'
+import CardCar from '../card/card';
+import Section from '../section/section';
+import axios from 'axios';
 
 export default function CategoryPage() {
+
+  let {categoryId, categoryName} = useParams();  
+  
+  let [category, setcategory] = useState([])
+
+  let [subcategoryId, setSubcategoryId] = useState()
+  
+
   const data = [
     {id: 1},
     {id: 2},
@@ -12,64 +25,64 @@ export default function CategoryPage() {
     {id: 4},
     {id: 5},
     {id: 6},
-    {id: 7},
-    {id: 8},
-    {id: 9},
-    {id: 10},
-    {id: 11},
-    {id: 12},
-    {id: 13},
-    {id: 14},
-    {id: 15},
-    {id: 16},
-    {id: 17},
-    {id: 18},
-    {id: 19},
-    {id: 20},
-    {id: 21},
-    {id: 22},
-    {id: 23},
   ]
 
-  let [page, setPage] = useState(1);
-  const PER_PAGE = 20;
+  if(!subcategoryId) {
+    setSubcategoryId(categoryId)
+  }
+ 
+  
 
-  const count = Math.ceil(data.length / PER_PAGE);
-  const _DATA = usePagination(data, PER_PAGE);
 
-  const handleChange = (e, p) => {
-    setPage(p);
-    _DATA.jump(p);
-  };
+  useEffect(() => {
+    axios.get(`https://cardealerlebanon.com/input/category/viewSubCat.php?parentId=${categoryId}`)
+    .then(category=>setcategory(category.data))
+  }, [categoryId])
 
   return (
-    <div className='categoryPage container' style={{color: "black"}}>
+    <div className='categoryPage our_container' style={{color: "black"}}>
+      {/* <h1>{categoryId}</h1> */}
+      
       <h2 className='title'>
-        Category name
+        {categoryName}
       </h2>
-         <div className='list'>
+
+
+      <div className='subcategory'>
+        {category.length !== 0 ?
+      <Carousel>
+      {category?.map((cat, i)=>{
+        let icon = cat.icon
+        let newIcon = icon.replace(';','')
+            return(
+            <div className='category' key={i}>
+                <img className="category_page_images" width="60px" src={newIcon}/>
+                <div>
+                    <Link to={`../category/${cat.id}/${cat.name}`}>
+                        {cat.name}
+                    </Link>
+                    </div>
+            </div>
+            )
+        })
+        }
+        </Carousel>
+      : <div>We will add products soon!</div>  
+      }
+      </div>
+
+         {category?.map((cat, i)=>{
+          // console.log(i)
           
-         {_DATA.currentData()?.map(i=>{
           return(
-           <div key={i.id} className='cnt'>
-            <CardItem/>
-          </div>
+            <Section key={i} category={cat}/>
           )
          })
          }
-          
-        <div className='center pagination'>
-         <Pagination
-         count={count}
-         size="large"
-         page={page}
-         variant="outlined"
-         shape="rounded"
-         onChange={handleChange}
-         />
-        </div>
+
+         
         </div>
         
-    </div>
+    
   )
 }

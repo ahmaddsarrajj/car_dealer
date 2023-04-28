@@ -3,7 +3,7 @@ import './notfound.css'
 
 export default function NotFound() {
   return (
-    <div className='notfound container'>
+    <div className='notfound our_container'>
         <h1>404</h1>
     <h4>
         UH OH! You're lost.
