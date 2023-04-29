@@ -15,7 +15,14 @@ export default function Ads() {
             "https://cardealerlebanon.com/input/ads/viewAds.php"
           )
         ).json();
-        setimages(data)
+        const newArr =await data.map(obj => {
+          return {
+            ...obj,
+            icon: obj.icon.replace(/;/g, '')
+          };
+        });
+        setimages(newArr)
+        console.log(newArr);
       }
      dataFetch();
     }, [])
@@ -25,13 +32,13 @@ export default function Ads() {
     <div className="ads">
         <div className="container1">  
                
-            <Carousel>
+            <Carousel autoPlay>
                 {
                     images?.map((image, i) => {
                       
                        return (
-                        <a key={i} href={image.link}>
-                        <img  src={image.icon} alt={image.title} className="image" />
+                        <a key={i} href={image?.link}>
+                        <img  src={image?.icon} alt={image?.title} className="image" />
                         </a>
                        )
                         

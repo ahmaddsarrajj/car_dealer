@@ -1,18 +1,19 @@
 .all {
   padding-block: 10px;
- 
-}
-.all h2{
-    color: black;
-  }
 
-.all .list{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
-    /* border: 1px solid black; */
+}
+
+.all h2 {
+  color: black;
+}
+
+.all .list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  /* border: 1px solid black; */
 }
 
 hr {
@@ -30,22 +31,24 @@ hr {
   width: 70%
 }
 
-@media only screen and (max-width: 426px){
+@media only screen and (max-width: 426px) {
   .all {
     padding: 0;
   }
-  
+
 }
 
 @media only screen and (min-width: 318px) {
- 
+
   .products {
     padding-block: 60px;
   }
+
   .all .list .cnt {
     width: 48%;
     padding: 12px 6px 0 0;
   }
+
   .all .list {
     justify-content: center;
   }
@@ -56,9 +59,11 @@ hr {
     width: 49%;
     padding: 40px 6px 0 0;
   }
+
   .all .list {
     justify-content: start;
   }
+
   .adsAll {
     padding-inline: 80px;
   }
@@ -68,13 +73,14 @@ hr {
   .all .list .cnt {
     width: 20%;
     padding: 40px 45px 0 0;
-    
+
   }
+
   .all .list {
     justify-content: space-between;
-    
+
   }
-  
+
 }
 
 @media only screen and (min-width: 1440px) {
@@ -88,5 +94,23 @@ hr {
   .all .list .cnt {
     width: 20%;
     padding: 40px 0px 0 0;
-  } 
+  }
+}
+
+.message-btn {
+  padding: 12px;
+  border-radius: 5px;
+  color: white;
+  border-style: none;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  background-color: brown;
+}
+
+.message-btn:hover {
+
+  color: rgb(202, 202, 202);
+  transition: color 0.5s ease-out;
+  cursor: pointer
 }
