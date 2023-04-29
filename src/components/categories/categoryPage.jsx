@@ -17,7 +17,7 @@ export default function CategoryPage() {
   let [category, setcategory] = useState([]);
 
   let [subcategoryId, setSubcategoryId] = useState();
-
+const [loading, setLoading] = useState(true);
   if (!subcategoryId) {
     setSubcategoryId(categoryId);
   }
@@ -29,7 +29,7 @@ export default function CategoryPage() {
       )
       .then((category) => {
         setcategory(category?.data);
-      });
+      }).finally(()=>setLoading(false));
   }, [categoryId]);
 
   return (
@@ -39,7 +39,7 @@ export default function CategoryPage() {
       <h2 className="title">{categoryName}</h2>
 
       <div className="subcategory">
-        {category?.length !== 0 && <CategoryCarousel data={category} />}
+        {category?.length !== 0 && <CategoryCarousel data={category} loading={loading} />}
         {category.length == 0 && <div>No data found</div>}
       </div>
 

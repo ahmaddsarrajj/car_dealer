@@ -9,7 +9,7 @@ export default function Footer() {
       
       <div className="foot our_container" >
         <div className="column" style={{paddingRight: "20px"}}>
-          <img src="/assets/logo_home.png" />
+          <img loading="lazy"   src="/assets/logo_home.png" />
         </div>
         <div className="column">
 
@@ -112,12 +112,12 @@ export default function Footer() {
           <div className="title">Download the App</div>
           <div className="item">
             <a href="https://www.instagram.com/cardealer.lebanon/?utm_medium=copy_link">
-              <img src="/assets/5a902db97f96951c82922874.png" />
+              <img loading="lazy"  src="/assets/5a902db97f96951c82922874.png" />
             </a>
           </div>
           <div className="item">
             <a href="https://www.instagram.com/cardealer.lebanon/?utm_medium=copy_link">
-            <img src="/assets/5a902dbf7f96951c82922875.png"/>
+            <img loading="lazy"  src="/assets/5a902dbf7f96951c82922875.png"/>
             </a>
           </div>
         </div>

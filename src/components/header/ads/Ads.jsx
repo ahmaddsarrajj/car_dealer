@@ -38,7 +38,7 @@ export default function Ads() {
                       
                        return (
                         <a key={i} href={image?.link}>
-                        <img  src={image?.icon} alt={image?.title} className="image" />
+                        <img loading="lazy"   src={image?.icon} alt={image?.title} className="image" />
                         </a>
                        )
                         

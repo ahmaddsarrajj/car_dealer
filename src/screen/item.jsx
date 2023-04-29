@@ -51,7 +51,7 @@ const ProductDetailPage = (props) => {
           <Carousel autoPlay>
             {data.images?.map((image, i) => {
               return (
-                <img className={classes.image} src={image} alt={data?.name} />
+                <img loading="lazy"  className={classes.image} src={image} alt={data?.name} />
               );
             })}
           </Carousel>

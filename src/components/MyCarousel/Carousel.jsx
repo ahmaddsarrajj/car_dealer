@@ -4,10 +4,11 @@ import "@splidejs/react-splide/css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import CardItem from "../card/itemcard";
 import { Link, useNavigate } from "react-router-dom";
+import LoadingCart, { LoadingCategory } from "../card/loadingCart";
 
 export function CategoryCarousel(props) {
   const navigate = useNavigate();
-  const { data } = props;
+  const { data , loading } = props;
   const options = {
     gap: "3vw",
     perPage: 4,
@@ -32,7 +33,7 @@ export function CategoryCarousel(props) {
       options={options}
       aria-label="My Favorite Images"
     >
-      {data?.map((cat, key) => {
+      {!loading ? data?.map((cat, key) => {
         let icon = cat?.icon;
         let newIcon = icon?.replace(";", "");
         return (
@@ -44,6 +45,7 @@ export function CategoryCarousel(props) {
               }}
             >
               <img
+                loading="lazy"
                 className="category_page_images"
                 width="60px"
                 src={newIcon}
@@ -56,13 +58,20 @@ export function CategoryCarousel(props) {
             </div>
           </SplideSlide>
         );
-      })}
+      }) : [1,2,3,4,5,6,7,8].map((cat, key) => {
+        return (
+          <SplideSlide key={key} style={{ padding: "1vw" }}>
+            <LoadingCategory />
+          </SplideSlide>
+        );
+      }
+      )}
     </Splide>
   );
 }
 
 export default function ItemCarousel(props) {
-  const { data } = props;
+  const { data, loading  } = props;
   const options = {
     gap: "3vw",
     perPage: 4,
@@ -82,18 +91,28 @@ export default function ItemCarousel(props) {
   };
 
   return (
-    <Splide
-      className="splide"
-      options={{ ...options }}
-      aria-label="My Favorite Images"
-    >
-      {data?.map((i, key) => {
-        return (
-          <SplideSlide key={key} style={{ padding: "1vw" }}>
-            <CardItem item={i} />
-          </SplideSlide>
-        );
-      })}
-    </Splide>
+    <>
+      <Splide
+        className="splide"
+        options={{ ...options }}
+        aria-label="My Favorite Images"
+      >
+        {!loading
+          ? data?.map((i, key) => {
+              return (
+                <SplideSlide key={key} style={{ padding: "1vw" }}>
+                  <CardItem item={i} />
+                </SplideSlide>
+              );
+            })
+          : [1,2,3,4].map((i, key) => {
+              return (
+                <SplideSlide key={key} style={{ padding: "1vw" }}>
+                  <LoadingCart />
+                </SplideSlide>
+              );
+            }) }
+      </Splide>
+    </>
   );
 }

@@ -16,7 +16,7 @@ export default function Navbar() {
       </span> */}
         <div className="logo">
              <Link to="/">
-               <img src="/assets/logo_home.png" width="100px"/>
+               <img loading="lazy"  src="/assets/logo_home.png" width="100px"/>
              </Link>
         </div>
         

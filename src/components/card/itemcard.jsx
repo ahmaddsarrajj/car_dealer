@@ -12,7 +12,7 @@ export default function CardItem(props) {
   const navigate = useNavigate();
   return (
     <div className="itemCard">
-      <img draggable={false} src={final_image[0]} />
+      <img loading="lazy"  draggable={false} src={final_image[0]} />
       <div className="text">
         <h5>{item?.name}</h5>
 

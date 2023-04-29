@@ -11,7 +11,7 @@ export default function Dolar(props) {
         {dollar.SOLD}
         </span>
         <span className='d-logo'>
-          <img src="/assets/icons8-us-dollar-circled-100.png" width="40px" />
+          <img loading="lazy"  src="/assets/icons8-us-dollar-circled-100.png" width="40px" />
         </span>
         <span>
         {dollar.BUYING}

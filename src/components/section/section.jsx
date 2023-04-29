@@ -12,7 +12,9 @@ import ItemCarousel from "../MyCarousel/Carousel";
 
 export default function Section(props) {
   let category = props.category;
-  let [items, setItem] = useState([]);
+  const [items, setItem] = useState([]);
+  const [status, setStatus] = useState("idle"); //loading, success, error
+  const [error, setError] = useState("");
   const { categoryName } = useParams();
   let url = "";
 
@@ -40,27 +42,33 @@ export default function Section(props) {
         url = `https://cardealerlebanon.com/input/webapi/viewItems.php?categoryid=${category.id}`;
         break;
     }
+    setStatus("loading");
+    axios
+      .get(url)
+      .then((item) => {
+        let itemsImage = [];
 
-    axios.get(url).then((item) => {
-      let itemsImage = [];
-
-      for (let i = 0; i < 5; i++) {
-        if (item.data[i] !== undefined) {
-          itemsImage.push(item.data[i]);
+        for (let i = 0; i < 5; i++) {
+          if (item.data[i] !== undefined) {
+            itemsImage.push(item.data[i]);
+          }
         }
-      }
-      setItem(itemsImage);
-    });
-  }, [category.id]);
+        setItem(itemsImage);
+        setStatus("success");
+      })
+      .catch((err) => {
+        setStatus("error");
+      });
+  }, [category.id]); //this should be a customized hook
 
   return (
     <div className="section">
       <h3>{category.name}</h3>
       <hr align="left" />
-      {items.length > 0 && <ItemCarousel data={items} />}
-      {items.length == 0 && <div>No data found</div>}
-
-      
+      {(status == "success" || status == "loading") && items.length > 0 && (
+        <ItemCarousel data={items} loading={status == "loading"} />
+      )}
+      {status != "loading" && items.length == 0 && <div>No data found</div>}
     </div>
   );
 }
