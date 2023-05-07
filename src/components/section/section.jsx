@@ -1,13 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Carousel from "react-material-ui-carousel";
 import CardCar from "../card/card";
 import CardItem from "../card/itemcard";
 import { useParams } from "react-router-dom";
 
 import "./section.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import ItemCarousel from "../MyCarousel/Carousel";
 
 export default function Section(props) {

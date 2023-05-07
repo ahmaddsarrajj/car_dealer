@@ -43,13 +43,14 @@ const useStyles = makeStyles((theme) => ({
 const ProductDetailPage = (props) => {
   const { data } = props;
   const classes = useStyles();
-
+  const images = data?.images?.split(";") || [];
+  images.pop()
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <Carousel autoPlay>
-            {data.images?.map((image, i) => {
+            {images?.map((image, i) => {
               return (
                 <img loading="lazy"  className={classes.image} src={image} alt={data?.name} />
               );
@@ -58,18 +59,18 @@ const ProductDetailPage = (props) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography variant="h4" className={classes.title}>
-            {data.name}
+            {data?.name}
           </Typography>
           <Typography variant="body1" className={classes.description}>
-            {data.description}
+            {data?.description}
           </Typography>
           <Typography variant="h6" className={classes.price}>
             {data?.price}
             {data?.currency === "American Dollar" ? "$" : "L.L"}
           </Typography>
-          <button className="message-btn ">Call Now</button>
+          <a  href={`tel: ${data?.phonenumber}`} className="message-btn">Call Now</a>
           <span/>
-          <button className="message-btn ">Whatsapp Us</button>
+          <a target="_blank" href={`https://wa.me/${data?.phonenumber}`} className="message-btn ">Whatsapp Us</a>
         </Grid>
       </Grid>
     </div>
@@ -79,26 +80,23 @@ export default function Item() {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const location = useLocation();
   console.log(location);
-  if (!location.state) {
-    return <Navigate to="/404" state={{ from: location }} replace />;
-  }
+  // if (!location.state) {
+    // return <Navigate to="/404" state={{ from: location }} replace />;
+  // }
+
 
   useEffect(() => {
-    if (location.state) {
-      setData(location.state);
-    }
-    else{
+   
       axios
-      .get(`http://localhost:8000/api/item/${id}`)
+      .get(`https://cardealerlebanon.com/input/webapi/viewItemById.php?id=${id}`)
       .then((res) => {
         setData(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-    }
   }, [location.state]);
 
   return (

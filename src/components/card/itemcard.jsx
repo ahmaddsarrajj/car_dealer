@@ -10,6 +10,7 @@ export default function CardItem(props) {
   let final_image = image?.split(";");
   final_image.pop()
   const navigate = useNavigate();
+  console.log(item);
   return (
     <div className="itemCard">
       <img loading="lazy"  draggable={false} src={final_image[0]} />
