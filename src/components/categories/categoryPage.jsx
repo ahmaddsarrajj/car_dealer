@@ -6,18 +6,18 @@ import usePagination from "../pagination";
 import "./categoryPage.css";
 import Carousel from "carousel-react-rcdev";
 import CardCar from "../card/card";
-import Section from "../section/section";
+import Section from "../section/Section";
 import axios from "axios";
 import ItemCarousel, { CategoryCarousel } from "../MyCarousel/Carousel";
 
 export default function CategoryPage() {
   const navigate = useNavigate();
-  let { categoryId, categoryName } = useParams();
+  const { categoryId, categoryName } = useParams();
 
-  let [category, setcategory] = useState([]);
+  const [category, setcategory] = useState([]);
 
-  let [subcategoryId, setSubcategoryId] = useState();
-const [loading, setLoading] = useState(true);
+  const [subcategoryId, setSubcategoryId] = useState();
+  const [loading, setLoading] = useState(true);
   if (!subcategoryId) {
     setSubcategoryId(categoryId);
   }
@@ -28,8 +28,9 @@ const [loading, setLoading] = useState(true);
         `https://cardealerlebanon.com/input/category/viewSubCat.php?parentId=${categoryId}`
       )
       .then((category) => {
-        setcategory(category?.data);
-      }).finally(()=>setLoading(false));
+        setcategory(category?.data)
+      })
+      .finally(() => setLoading(false));
   }, [categoryId]);
 
   return (
@@ -39,7 +40,9 @@ const [loading, setLoading] = useState(true);
       <h2 className="title">{categoryName}</h2>
 
       <div className="subcategory">
-        {category?.length !== 0 && <CategoryCarousel data={category} loading={loading} />}
+        {category?.length !== 0 && (
+          <CategoryCarousel data={category} loading={loading} />
+        )}
         {category.length == 0 && <div>No data found</div>}
       </div>
 

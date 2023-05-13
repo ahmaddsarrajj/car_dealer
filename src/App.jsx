@@ -1,14 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import All from "./screen/all";
-import CategoryPage from "./components/categories/categoryPage";
+import CategoryPage from "./components/categories/CategoryPage";
 import NotFound from "./components/404/notfound";
 import ItemView from "./screen/items/itemView";
-import Login from "./screen/login";
+import Login from "./screen/Login";
 import Signup from "./screen/signup";
 import Component from "./screen/component";
-import Item from "./screen/item";
-
+import Item from './screen/Item'
 function App() {
   return (
     <Routes>
@@ -18,7 +17,7 @@ function App() {
           path="category/:categoryId/:categoryName"
           element={<CategoryPage />}
         />
-        <Route path="item/:id" element={<Item />} />
+        <Route path="/:type/:id" element={<Item />} />
       </Route>
 
       <Route path="/signup" element={<Signup />} />

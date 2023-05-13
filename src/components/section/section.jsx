@@ -13,34 +13,12 @@ export default function Section(props) {
   const [status, setStatus] = useState("idle"); //loading, success, error
   const [error, setError] = useState("");
   const { categoryName } = useParams();
-  let url = "";
-
-  useEffect(() => {
-    switch (categoryName) {
-      case "Pets":
-        url = `https://cardealerlebanon.com/input/webapi/viewPets.php?categoryid=${category.id}`;
-        break;
-      case "Jobs":
-        url = `https://cardealerlebanon.com/input/webapi/viewJobs.php?categoryid=${category.id}`;
-        break;
-      case "Phone Number":
-        url = `https://cardealerlebanon.com/input/webapi/viewPhoneNumber.php?categoryid=${category.id}`;
-        break;
-      case "Plate Number":
-        url = `https://cardealerlebanon.com/input/webapi/viewPlateNumber.php?categoryid=${category.id}`;
-        break;
-      case "Real Estate":
-        url = `https://cardealerlebanon.com/input/webapi/viewRealstate.php?categoryid=${category.id}`;
-        break;
-      case "Services":
-        url = `https://cardealerlebanon.com/input/webapi/viewServices.php?categoryid=${category.id}`;
-        break;
-      default:
-        url = `https://cardealerlebanon.com/input/webapi/viewItems.php?categoryid=${category.id}`;
-        break;
-    }
+  
+  const [url , setUrl] = useState("")
+  const fetching = async (url) => {
     setStatus("loading");
-    axios
+
+   await axios
       .get(url)
       .then((item) => {
         let itemsImage = [];
@@ -54,8 +32,41 @@ export default function Section(props) {
         setStatus("success");
       })
       .catch((err) => {
-        setStatus("error");
+        setStatus(err+"");
       });
+  }
+  useEffect(() => {
+    switch (categoryName) {
+      case "Pets":
+        setUrl(`https://cardealerlebanon.com/input/webapi/viewPets.php?categoryid=${category.id}`);
+        fetching(`https://cardealerlebanon.com/input/webapi/viewPets.php?categoryid=${category.id}`);
+        break;
+      case "Jobs":
+         setUrl(`https://cardealerlebanon.com/input/webapi/viewJobs.php?categoryid=${category.id}`)
+         fetching(`https://cardealerlebanon.com/input/webapi/viewJobs.php?categoryid=${category.id}`)
+        break;
+      case "Phone%20Number":
+        setUrl(`https://cardealerlebanon.com/input/webapi/viewPhoneNumber.php?categoryid=${category.id}`);
+        fetching(`https://cardealerlebanon.com/input/webapi/viewPhoneNumber.php?categoryid=${category.id}`);
+        break;
+      case "Plate%20Number":
+        setUrl(`https://cardealerlebanon.com/input/webapi/viewPlateNumber.php?categoryid=${category.id}`);
+        fetching(`https://cardealerlebanon.com/input/webapi/viewPlateNumber.php?categoryid=${category.id}`);
+        break;
+      case "Real%20Estate":
+        setUrl(`https://cardealerlebanon.com/input/webapi/viewRealstate.php?categoryid=${category.id}`);
+        fetching(`https://cardealerlebanon.com/input/webapi/viewRealstate.php?categoryid=${category.id}`);
+        break;
+      case "Services":
+        setUrl(`https://cardealerlebanon.com/input/webapi/viewServices.php?categoryid=${category.id}`);
+        fetching(`https://cardealerlebanon.com/input/webapi/viewServices.php?categoryid=${category.id}`);
+        break;
+      default:
+        setUrl(`https://cardealerlebanon.com/input/webapi/viewItems.php?categoryid=${category.id}`);
+        fetching(`https://cardealerlebanon.com/input/webapi/viewItems.php?categoryid=${category.id}`);
+        break;
+    }
+    
   }, [category.id]); //this should be a customized hook
 
   return (
@@ -63,9 +74,9 @@ export default function Section(props) {
       <h3>{category.name}</h3>
       <hr align="left" />
       {(status == "success" || status == "loading") && items.length > 0 && (
-        <ItemCarousel data={items} loading={status == "loading"} />
+        <ItemCarousel data={items} url={url } loading={status == "loading"} />
       )}
-      {status != "loading" && items.length == 0 && <div>No data found</div>}
+      {status != "loading" && items.length == 0 && <div>No datas found</div>}
     </div>
   );
 }

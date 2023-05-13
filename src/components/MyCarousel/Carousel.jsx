@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./splide.css";
 import "@splidejs/react-splide/css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -8,7 +8,7 @@ import LoadingCart, { LoadingCategory } from "../card/loadingCart";
 
 export function CategoryCarousel(props) {
   const navigate = useNavigate();
-  const { data , loading } = props;
+  const { data, loading } = props;
   const options = {
     gap: "3vw",
     perPage: 4,
@@ -33,45 +33,46 @@ export function CategoryCarousel(props) {
       options={options}
       aria-label="My Favorite Images"
     >
-      {!loading ? data?.map((cat, key) => {
-        let icon = cat?.icon;
-        let newIcon = icon?.replace(";", "");
-        return (
-          <SplideSlide key={key} style={{ padding: "1vw" }}>
-            <div
-              className="category"
-              onClick={() => {
-                navigate(`../category/${cat?.id}/${cat?.name}`);
-              }}
-            >
-              <img
-                loading="lazy"
-                className="category_page_images"
-                width="60px"
-                src={newIcon}
-              />
-              <div>
-                <Link to={`../category/${cat?.id}/${cat?.name}`}>
-                  {cat?.name}
-                </Link>
-              </div>
-            </div>
-          </SplideSlide>
-        );
-      }) : [1,2,3,4,5,6,7,8].map((cat, key) => {
-        return (
-          <SplideSlide key={key} style={{ padding: "1vw" }}>
-            <LoadingCategory />
-          </SplideSlide>
-        );
-      }
-      )}
+      {!loading
+        ? data?.map((cat, key) => {
+            let icon = cat?.icon;
+            let newIcon = icon?.replace(";", "");
+            return (
+              <SplideSlide key={key} style={{ padding: "1vw" }}>
+                <div
+                  className="category"
+                  onClick={() => {
+                    navigate(`../category/${cat?.id}/${cat?.name}`);
+                  }}
+                >
+                  <img
+                    loading="lazy"
+                    className="category_page_images"
+                    width="60px"
+                    src={newIcon}
+                  />
+                  <div>
+                    <Link to={`../category/${cat?.id}/${cat?.name}`}>
+                      {cat?.name}
+                    </Link>
+                  </div>
+                </div>
+              </SplideSlide>
+            );
+          })
+        : [1, 2, 3, 4, 5, 6, 7, 8].map((cat, key) => {
+            return (
+              <SplideSlide key={key} style={{ padding: "1vw" }}>
+                <LoadingCategory />
+              </SplideSlide>
+            );
+          })}
     </Splide>
   );
 }
 
 export default function ItemCarousel(props) {
-  const { data, loading  } = props;
+  const { data, loading, url } = props;
   const options = {
     gap: "3vw",
     perPage: 4,
@@ -89,6 +90,33 @@ export default function ItemCarousel(props) {
       },
     },
   };
+  const [type, setType] = useState("item");
+  useEffect(() => {
+    switch (true) {
+      case url.includes("viewPets"):
+        setType("pet");
+        break;
+      case url.includes("viewJobs"):
+        setType("job");
+        break;
+      case url.includes("viewPhoneNumber"):
+        setType("phone");
+        break;
+      case url.includes("viewPlateNumber"):
+        setType("plate");
+        break;
+      case url.includes("viewRealstate"):
+        setType("realstate");
+        break;
+      case url.includes("viewServices"):
+        setType("service");
+        break;
+      default:
+        setType("item");
+        break;
+    }
+    console.log({ url });
+  }, [url]);
 
   return (
     <>
@@ -101,17 +129,17 @@ export default function ItemCarousel(props) {
           ? data?.map((i, key) => {
               return (
                 <SplideSlide key={key} style={{ padding: "1vw" }}>
-                  <CardItem item={i} />
+                  <CardItem item={{ ...i, type }} />
                 </SplideSlide>
               );
             })
-          : [1,2,3,4].map((i, key) => {
+          : [1, 2, 3, 4].map((i, key) => {
               return (
                 <SplideSlide key={key} style={{ padding: "1vw" }}>
                   <LoadingCart />
                 </SplideSlide>
               );
-            }) }
+            })}
       </Splide>
     </>
   );

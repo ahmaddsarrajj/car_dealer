@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./css/item.css";
 import axios from "axios";
-import {
-  Navigate,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 import { Grid, Typography, Button } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
@@ -44,7 +39,7 @@ const ProductDetailPage = (props) => {
   const { data } = props;
   const classes = useStyles();
   const images = data?.images?.split(";") || [];
-  images.pop()
+  images.pop();
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
@@ -52,7 +47,12 @@ const ProductDetailPage = (props) => {
           <Carousel autoPlay>
             {images?.map((image, i) => {
               return (
-                <img loading="lazy"  className={classes.image} src={image} alt={data?.name} />
+                <img
+                  loading="lazy"
+                  className={classes.image}
+                  src={image}
+                  alt={data?.name}
+                />
               );
             })}
           </Carousel>
@@ -68,36 +68,86 @@ const ProductDetailPage = (props) => {
             {data?.price}
             {data?.currency === "American Dollar" ? "$" : "L.L"}
           </Typography>
-          <a  href={`tel: ${data?.phonenumber}`} className="message-btn">Call Now</a>
-          <span/>
-          <a target="_blank" href={`https://wa.me/${data?.phonenumber}`} className="message-btn ">Whatsapp Us</a>
+          <a href={`tel: ${data?.phonenumber}`} className="message-btn">
+            Call Now
+          </a>
+          <span />
+          <a
+            target="_blank"
+            href={`https://wa.me/${data?.phonenumber}`}
+            className="message-btn "
+          >
+            Whatsapp Us
+          </a>
         </Grid>
       </Grid>
     </div>
   );
 };
 export default function Item() {
-  const { id } = useParams();
+  const { type, id } = useParams();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  console.log(location);
-  // if (!location.state) {
-    // return <Navigate to="/404" state={{ from: location }} replace />;
-  // }
-
-
-  useEffect(() => {
-   
-      axios
-      .get(`https://cardealerlebanon.com/input/webapi/viewItemById.php?id=${id}`)
+  const fetching = async (url) => {
+    await axios
+      .get(url)
       .then((res) => {
         setData(res.data);
-        console.log(res.data);
+        console.log("res.data",res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [location.state]);
+  };
+
+  useEffect(() => {
+    let url = "";
+
+    switch (type) {
+      case "pet":
+        url = `https://cardealerlebanon.com/input/webapi/viewPetById.php?id=${id}`;
+        fetching(
+          `https://cardealerlebanon.com/input/webapi/viewPetById.php?id=${id}`
+        );
+        break;
+      case "job":
+        url = `https://cardealerlebanon.com/input/webapi/viewJobById.php?id=${id}`;
+        fetching(
+          `https://cardealerlebanon.com/input/webapi/viewJobById.php?id=${id}`
+        );
+        break;
+      case "phone":
+        url = `https://cardealerlebanon.com/input/webapi/viewPhoneNumberById.php?id=${id}`;
+        fetching(
+          `https://cardealerlebanon.com/input/webapi/viewPhoneNumberById.php?id=${id}`
+        );
+        break;
+      case "plate":
+        url = `https://cardealerlebanon.com/input/webapi/viewPlateNumberById.php?id=${id}`;
+        fetching(
+          `https://cardealerlebanon.com/input/webapi/viewPlateNumberById.php?id=${id}`
+        );
+        break;
+      case "realstate":
+        url = `https://cardealerlebanon.com/input/webapi/viewRealstateById.php?id=${id}`;
+        fetching(
+          `https://cardealerlebanon.com/input/webapi/viewRealstateById.php?id=${id}`
+        );
+        break;
+      case "service":
+        url = `https://cardealerlebanon.com/input/webapi/viewServiceById.php?id=${id}`;
+        fetching(
+          `https://cardealerlebanon.com/input/webapi/viewServiceById.php?id=${id}`
+        );
+        break;
+      default:
+        url = `https://cardealerlebanon.com/input/webapi/viewItemById.php?id=${id}`;
+        fetching(
+          `https://cardealerlebanon.com/input/webapi/viewItemById.php?id=${id}`
+        );
+        break;
+    }
+  }, [type]);
 
   return (
     <div className="item">
